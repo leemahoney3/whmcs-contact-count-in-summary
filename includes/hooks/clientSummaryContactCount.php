@@ -1,7 +1,5 @@
 <?php
 
-use WHMCS\Database\Capsule;
-
 /**
  * WHMCS Contact Count in Client Summary
  *
@@ -12,15 +10,11 @@ use WHMCS\Database\Capsule;
  * @author     Lee Mahoney <lee@leemahoney.dev>
  * @copyright  Copyright (c) Lee Mahoney 2022
  * @license    MIT License
- * @version    1.0.0
+ * @version    1.0.2
  * @link       https://leemahoney.dev
  */
 
-
-
-if (!defined('WHMCS')) {
-    die('You cannot access this file directly.');
-}
+use WHMCS\User\Client\Contact;
 
 function client_summary_contact_count($vars) {
 
@@ -50,7 +44,7 @@ function client_summary_contact_count($vars) {
     if ($match) {
 
         # Get all users associated with the client, don't need anything from this, just need to count it.
-        $contacts = Capsule::table('tblcontacts')->select('userid')->where('userid', $userid)->get();
+        $contacts = Contact::select('userid')->where('userid', $userid)->get();
         
         $script =   '<script type="text/javascript">
                         $(document).ready(function() {
