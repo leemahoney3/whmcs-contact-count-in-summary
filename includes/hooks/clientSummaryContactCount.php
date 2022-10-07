@@ -1,5 +1,7 @@
 <?php
 
+use WHMCS\User\Client\Contact;
+
 /**
  * WHMCS Contact Count in Client Summary
  *
@@ -13,8 +15,6 @@
  * @version    1.0.2
  * @link       https://leemahoney.dev
  */
-
-use WHMCS\User\Client\Contact;
 
 function client_summary_contact_count($vars) {
 
